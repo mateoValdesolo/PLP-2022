@@ -11,17 +11,11 @@
 intervaloPerfectos :: (Int,Int) -> String
 intervaloPerfectos (n,m)
     | n > m = "Error"
-    | otherwise = recorr n m
+    | n < m = calcularRaiz n n ++ intervaloPerfectos (n+1,m)
+    | n == m = calcularRaiz n n
 
--- Va desde N hasta M
-recorr :: Int -> Int -> String
-recorr n m
-    | n < m = repet n n m
-    | n == m = repet n n m
-
--- Recorre desde N hasta que encuentra el cuadrado
-repet :: Int -> Int -> Int -> String
-repet i num m
-    | i * i == num = show(num) ++ " " ++ recorr (num+1) m
-    | i * i > num = repet (i-1) num m
-    | otherwise = recorr (num+1) m
+calcularRaiz :: Int -> Int -> String
+calcularRaiz n m
+    | n * n == m = show m ++ " "
+    | n * n > m = calcularRaiz (n-1) m
+    | otherwise = ""
