@@ -2,13 +2,13 @@ tablita2 :: (Int,Int) -> Int -> String
 tablita2 (j,k) m
     | (j > k) || (j < 1) || (m <= 0)= "Error"
     | (mod j 2 == 0) = tablita2 (j+1,k) m
-    | j == k = show(j) ++ " " ++ show(sumat 0 j m)
-    | j < k = show(j) ++ " " ++ show(sumat 0 j m) ++ "\n" ++ tablita2(j+1,k) m
+    | j == k = show(j) ++ " " ++ show(sumat j m)
+    | j < k = show(j) ++ " " ++ show(sumat j m) ++ "\n" ++ tablita2(j+1,k) m
 
-sumat :: Int -> Int -> Int -> Float
-sumat x l m
-    | x < l = cuenta x m + sumat (x+1) l m
-    | x == l = cuenta x m
+sumat :: Int -> Int -> Float
+sumat l m
+    | l > 0 =  sumat (l-1) m + cuenta l m
+    | l == 0 = cuenta l m
 
 cuenta :: Int -> Int -> Float
 cuenta x m = fromIntegral(parte1 + parte2) / fromIntegral (parte3) 

@@ -2,24 +2,25 @@ piramSinNones :: Int -> String
 piramSinNones m
     | m < 0 = "Error"
     | m == 0 = "0"
-    | otherwise = ascenso 0 m
+    | otherwise = ascenso m ++ "\n" ++ descenso(m-1)
 
 -- Va desde 0 hasta m 
-ascenso :: Int -> Int -> String
-ascenso i m
-    | i < m = mostrar 0 i ++ "\n" ++ ascenso(i+1) m
-    | i == m = mostrar 0 i ++ "\n" ++ descenso(i-1)
+ascenso :: Int -> String
+ascenso m
+    | m > 0 = ascenso(m-1) ++ "\n" ++ mostrar m 
+    | m == 0 = "0"
 
 -- Va desde m hasta 0
 descenso :: Int -> String
-descenso i
-    | i > 0 = mostrar 0 i ++ "\n" ++ descenso(i-1)
-    | i == 0 = show(i)
+descenso m
+    | m > 0 = mostrar m ++ "\n" ++ descenso(m-1)
+    | m == 0 = show(m)
 
 -- Muestra los numeros desde 0 hasta i
-mostrar :: Int -> Int -> String
-mostrar i m
-    | i < m && (mod i 2 == 0) = show(i) ++ mostrar (i+1) m
-    | i < m  = show "*" ++ mostrar (i+1) m
-    | i == m && (mod i 2 == 0) = show(m)
-    | i == m = show "*"
+mostrar :: Int -> String
+mostrar m
+    | m > 0 && esPar = mostrar (m-1) ++ show(m)
+    | m > 0 && not(esPar) = mostrar (m-1) ++ "*"
+    | m == 0 =  "0"
+        where
+            esPar = (mod m 2 == 0) 
