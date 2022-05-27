@@ -18,3 +18,4 @@ calcularRaiz :: Float -> String
 calcularRaiz n
     | sqrt(n) - fromIntegral(round(sqrt(n))) == 0 = show(round(n)) ++ " "
     | otherwise = ""
+11
