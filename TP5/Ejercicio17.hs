@@ -1,6 +1,10 @@
 factorialTable :: Int -> Int -> String 
-factorialTable n m = aux n m
+factorialTable m n
+    | m > n || n <= 0 = "Error"
+    | m < n = show(factorial m) ++ "\t" ++ factorialTable (m+1) n
+    | m == n = show(factorial m)
 
-aux :: Int -> Int -> String
-
-
+factorial :: Int -> Int
+factorial m
+    | m == 0 = 1
+    | m > 0 = factorial (m-1) * m
