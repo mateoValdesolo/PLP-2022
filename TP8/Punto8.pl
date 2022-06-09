@@ -24,7 +24,6 @@ sustOcurr(P,Q,[X|L],[X|L2]) :- sustOcurr(P,Q,L,L2).
 cardinalidad([],0).
 cardinalidad([X|L],succ(R)) :- elimOcurr(X,L,L2), cardinalidad(L2,R).
 
-
 /* Inversion */
 invertir([],[]).
 invertir([X|L],R) :- invertir(L,S), concat(S,[X],R).
@@ -32,9 +31,12 @@ invertir([X|L],R) :- invertir(L,S), concat(S,[X],R).
 concat([], L, L).
 concat([X|L], L2, [X|L3]) :- concat(L,L2,L3).
 
-/* Sufijo */
+/* Sufijo Terminar */
+sufijo([X],[X]).
+sufijo([X|L],L2) :- sufijo(L,L2).
 
 /* Generar Palindromo */
+palindromo(L,R) :- invertir(L,S), concat(L,S,R).
 
 /* Duplicar elementos de la lista */
 duplicar([],[]).
