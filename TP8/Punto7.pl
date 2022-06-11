@@ -11,7 +11,7 @@ pertenece(X, [Y|L]) :- pertenece(X,L).
 
 /* Cantidad de ocurrencias de un elemento */
 ocurr(X,[],0).
-ocurr(X,[X|L], succ(R)) :- ocurr(X,L,R).
+ocurr(X,[X|L], R) :- ocurr(X,L,S), R is S+1.
 ocurr(X,[Y|L],R) :- ocurr(X,L,R).
 
 /* Eliminacion de la primera ocurrencia de un elemento */
@@ -26,7 +26,7 @@ sustitucion(X,Z,[Y|L1],[Y|L2]) :- sustitucion(X,Z,L1,L2).
 
 /* Longitud de la lista */
 longitud([],0).
-longitud([X|L],succ(R)) :- longitud(L,R).
+longitud([X|L],R) :- longitud(L,S), R is S+1.
 
 /* Prefijo */
 prefijo([],[]).

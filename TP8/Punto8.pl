@@ -22,7 +22,7 @@ sustOcurr(P,Q,[X|L],[X|L2]) :- sustOcurr(P,Q,L,L2).
 
 /* Cardinalidad */
 cardinalidad([],0).
-cardinalidad([X|L],succ(R)) :- elimOcurr(X,L,L2), cardinalidad(L2,R).
+cardinalidad([X|L],R) :- elimOcurr(X,L,L2), cardinalidad(L2,S) , R is S+1 .
 
 /* Inversion */
 invertir([],[]).
